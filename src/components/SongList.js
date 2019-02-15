@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
+import {selectSong} from "../actions";
 
 class SongList extends Component {
   renderList() {
@@ -7,7 +8,12 @@ class SongList extends Component {
       return (
         <div className="item" key={song.title}>
           <div className="right floated content">
-            <button className="ui button primary">Select</button>
+            <button
+              className="ui button primary"
+              onClick={() => this.props.selectSong(song)}
+            >
+              Select
+            </button>
           </div>
           <div className="content">{song.title}</div>
         </div>
@@ -25,11 +31,17 @@ const mapStateToProps = state => {
   // Named 'mapStateToProps' by convention
   // We're gonna take the state from our store,
   // then cause that data to become props inside of this component
+  // mapStateToProps re-runs whenever the state updates
   console.log(state);
   return {songs: state.songs}; // this.props === {songs: state.songs} in SongList
 };
 
-export default connect(mapStateToProps)(SongList);
+export default connect(
+  mapStateToProps,
+  {
+    selectSong
+  }
+)(SongList);
 //configures connect and tell it how to get some data from Provider
 //we configure it by passing it a function: mapStateToProps
 
