@@ -53,3 +53,10 @@ export default connect(
 //    - get a first arg of state
 //    - return an object
 //        - that is going to show up as props inside of our component
+
+/* 
+=== dispatch behind the scenes ===
+dispatch automatically gets called inside connect
+connect gets the action that gets returned from action creator, 
+throws it into the dispatch function for us 
+*/
