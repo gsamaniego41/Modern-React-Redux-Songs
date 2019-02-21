@@ -39,7 +39,7 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   {
-    selectSong
+    selectSong //selectSong is an action
   }
 )(SongList);
 //configures connect and tell it how to get some data from Provider
